@@ -1,7 +1,9 @@
 'use client'
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { FaInstagram } from 'react-icons/fa';
+import { FaArrowRight, FaBinoculars, FaHandHoldingHeart, FaInstagram, FaLeaf, FaTrophy } from 'react-icons/fa';
+import Footer from './Footer';
+
 
 const HeroSection = () => {
     const professionals = [
@@ -11,6 +13,90 @@ const HeroSection = () => {
         { name: 'Sarah Rules', title: 'Hair Designer', image: '/team.png' },
 
     ];
+    const features = [
+        { icon: <FaHandHoldingHeart />, title: 'Professional Care', description: 'Etiam est augue, tempus purus gravida.' },
+        { icon: <FaTrophy />, title: 'Premium brands', description: 'Etiam est augue, tempus purus gravida.' },
+        { icon: <FaLeaf />, title: 'Natural cosmetic', description: 'Etiam est augue, tempus purus gravida.' },
+    ];
+
+
+    const bannerData = [
+        {
+            id: 1,
+            imageUrl: '/banner.png',
+            description: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+        },
+        {
+            id: 2,
+            imageUrl: '/banner.png',
+            description: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+        },
+        {
+            id: 3,
+            imageUrl: '/banner.png',
+            description: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+        },
+        {
+            id: 4,
+            imageUrl: '/banner.png',
+            description: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+        },
+    ];
+    const BannerCard = ({ imageUrl, description }) => (
+        <div className="relative w-full h-[300px] overflow-hidden">
+            <img src={imageUrl} alt="Bride's Day" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4">
+                <h2 className="text-white text-lg font-semibold mb-1">CONHEÇA NOSSO</h2>
+                <h3 className="text-[#D4AF37] text-2xl font-bold mb-2">DIA DE NOIVA</h3>
+                <p className="text-white text-sm mb-4">{description}</p>
+                <button className="bg-[#D4AF37] text-white py-2 px-4 rounded flex items-center justify-center hover:bg-opacity-80 transition-colors">
+                    Mais Informações <FaArrowRight className="ml-2 w-4 h-4" />
+                </button>
+            </div>
+        </div>
+    );
+
+    const testimonials = [
+        {
+            quote: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
+            name: "Sarah Nimbus",
+            title: "Publicitária",
+            image: "https://avatar.iran.liara.run/public/11"
+        },
+        {
+            quote: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
+            name: "Jéssika Jones",
+            title: "Advogada",
+            image: "https://avatar.iran.liara.run/public/11"
+        },
+        {
+            quote: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
+            name: "Sarah Nimbus",
+            title: "Publicitária",
+            image: "https://avatar.iran.liara.run/public/11"
+        },
+        {
+            quote: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
+            name: "Jéssika Jones",
+            title: "Advogada",
+            image: "https://avatar.iran.liara.run/public/11"
+        },
+    ];
+    const TestimonialCard = ({ quote, name, title, image }) => (
+        <div className="bg-white p-6 rounded-lg shadow-md flex gap-2">
+            <span className="text-6xl hidden lg:block">"</span>
+            <div>
+                <p className="text-gray-600 mb-4">{quote}</p>
+                <div className="flex items-center">
+                    <img src={image} alt={name} className="w-12 h-12 rounded-full mr-4" />
+                    <div>
+                        <h3 className="font-semibold text-gray-800">{name}</h3>
+                        <p className="text-gray-500">{title}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
     const [isPlaying, setIsPlaying] = useState(false);
 
     const handlePlayClick = () => {
@@ -214,7 +300,42 @@ const HeroSection = () => {
                     </video>
                 )}
             </div>
+            {/* Features */}
+            <div className="container mx-auto py-12 px-8 bg-[#F3E2D5]">
+                <div className="flex flex-wrap justify-between">
+                    {features.map((feature, index) => (
+                        <div key={index} className="text-center lg:p-12">
+                            <div className="text-4xl mb-2 flex justify-center">{feature.icon}</div>
+                            <h3 className="text-[#B22828] font-semibold mb-1">{feature.title}</h3>
+                            <p className="text-sm text-gray-600">{feature.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
 
+            {/* Image Carousel */}
+            <div className="w-full">
+                <div className="flex flex-wrap">
+                    {bannerData.map((banner) => (
+                        <div key={banner.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex-shrink-0">
+                            <BannerCard {...banner} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Testimonials */}
+            <div className="bg-[#FDF7F2] py-12 max-w-7xl mx-auto mt-16 px-4 sm:px-6 lg:px-8">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl font-bold text-center mb-8 text-[#C2936E]">TESTIMONIALS</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {testimonials.map((testimonial, index) => (
+                            <TestimonialCard key={index} {...testimonial} />
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <Footer/>
         </>
     );
 };
