@@ -25,25 +25,29 @@ const HeroSection = () => {
             id: 1,
             imageUrl: '/banner.png',
             description: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+            duration:'500'
         },
         {
             id: 2,
             imageUrl: '/banner.png',
             description: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+            duration:'1000'
         },
         {
             id: 3,
             imageUrl: '/banner.png',
             description: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+            duration:'1500'
         },
         {
             id: 4,
             imageUrl: '/banner.png',
             description: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+            duration:'2000'
         },
     ];
-    const BannerCard = ({ imageUrl, description }) => (
-        <div className="relative w-full h-[300px] overflow-hidden">
+    const BannerCard = ({ imageUrl, description,duration }) => (
+        <div className="relative w-full h-[300px] overflow-hidden" data-aos="fade-up" data-aos-duration={duration}>
             <img src={imageUrl} alt="Bride's Day" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4">
                 <h2 className="text-white text-lg font-semibold mb-1">CONHEÇA NOSSO</h2>
@@ -83,7 +87,7 @@ const HeroSection = () => {
         },
     ];
     const TestimonialCard = ({ quote, name, title, image }) => (
-        <div className="bg-white p-6 rounded-lg shadow-md flex gap-2">
+        <div className="bg-white p-6 rounded-lg shadow-md flex gap-2" data-aos="fade-in">
             <span className="text-6xl hidden lg:block">"</span>
             <div>
                 <p className="text-gray-600 mb-4">{quote}</p>
