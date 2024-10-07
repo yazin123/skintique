@@ -1,8 +1,22 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import { FaInstagram } from 'react-icons/fa';
 
 const HeroSection = () => {
+    const professionals = [
+        { name: 'Sarah Rules', title: 'Hair Designer', image: '/team.png' },
+        { name: 'Sarah Rules', title: 'Hair Designer', image: '/team.png' },
+        { name: 'Sarah Rules', title: 'Hair Designer', image: '/team.png' },
+        { name: 'Sarah Rules', title: 'Hair Designer', image: '/team.png' },
+
+    ];
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const handlePlayClick = () => {
+        setIsPlaying(true);
+    };
+
 
     return (
         <>
@@ -91,30 +105,32 @@ const HeroSection = () => {
             </section>
 
             {/* Services Section */}
-            <section className="py-12">
+            <section className="">
                 <div className="">
-                    <div className="grid grid-cols-2 md:grid-cols-4 ">
+                    <div className="grid grid-cols-2 md:grid-cols-4">
                         {[
-                            { name: 'Makeup', src: '/makeup.png',duration:"1500" },
-                            { name: 'Skincare', src: '/cosmetics.png' },
-                            { name: 'Haircare', src: '/hairdressing.png' },
-                            { name: 'Nailcare', src: '/nailcare.png' }
+                            { name: 'Makeup', src: '/makeup.png', duration: '900' },
+                            { name: 'Skincare', src: '/cosmetics.png', duration: '1400' },
+                            { name: 'Haircare', src: '/hairdressing.png', duration: '2100' },
+                            { name: 'Nailcare', src: '/nailcare.png', duration: '2600' }
                         ].map((service) => (
                             <div
                                 key={service.name}
-                                className="relative bg-white  shadow-md text-center hover:shadow-lg transition duration-300"
+                                className="relative bg-white shadow-md text-center hover:shadow-lg transition duration-300"
                                 style={{
                                     backgroundImage: `url(${service.src})`,
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center',
-                                    height: '300px'
+                                    height: '300px',
                                 }}
+                                data-aos="fade-up" // AOS animation type
+                                data-aos-duration={service.duration} // Different durations
                             >
                                 {/* Overlay to darken the background */}
-                                <div className="absolute inset-0 bg-black bg-opacity-40 "></div>
+                                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
                                 {/* Service Name */}
-                                <div className="relative flex items-center justify-center gap-0 h-full">
+                                <div className="relative flex items-center justify-center h-full">
                                     <h3 className="text-2xl font-bold text-white head-font">{service.name}</h3>
                                 </div>
                             </div>
@@ -123,6 +139,81 @@ const HeroSection = () => {
                 </div>
             </section>
 
+            {/* team section */}
+            <div className="flex flex-col lg:flex-row">
+                {/* Left Section - Main Image */}
+                <div className="lg:w-2/3 w-full lg:pr-8  lg:mb-0 min-h-[400px]">
+                    <div className="relative h-[400px] lg:h-full">
+                        <Image
+                            src="/teammain.png"
+                            alt="Blonde hair"
+                            layout="fill"
+                            objectFit="cover"
+                            className=""
+                        />
+                        <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center p-6 rounded-lg">
+                            <h2 className="text-white text-3xl md:text-4xl font-bold mb-2 text-end">OUR</h2>
+                            <h2 className="text-yellow-600 text-3xl md:text-4xl font-bold mb-4 text-end">PROFESSIONALS</h2>
+                            <p className="text-white text-sm text-end">
+                                Meet all our experts who are at your disposal to take care of your hair.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Right Section - Professionals Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+                    {professionals.map((prof, index) => (
+                        <div key={index} className=" p-4 rounded-lg ">
+                            <Image
+                                src={prof.image}
+                                alt={prof.name}
+                                width={1000}
+                                height={1000}
+                                className="w-full h-48 object-cover rounded-lg mb-4"
+                            />
+                            <h3 className="font-bold text-lg">{prof.name}</h3>
+                            <p className="text-gray-600 mb-4">{prof.title}</p>
+                            {/* <div className="flex space-x-2">
+                                <FaInstagram className="text-gray-500" size={20} />
+                            </div> */}
+                        </div>
+                    ))}
+                </div>
+            </div>
+            {/* video section */}
+            <div className="relative w-full h-screen overflow-hidden">
+                {!isPlaying ? (
+                    // Placeholder image
+                    <div className="absolute inset-0 flex items-center justify-center bg-gray-300">
+                        <Image
+                            src="/video.png" // Replace with your image source
+                            alt="Placeholder"
+                            layout="fill"
+                            objectFit="cover"
+                            className="opacity-75"
+                        />
+                        <button
+                            onClick={handlePlayClick}
+                            className="absolute text-white text-5xl bg-black rounded-full p-5 h-20 hover:bg-gray-800 transition duration-300"
+                        >
+                            ▶
+                        </button>
+                    </div>
+                ) : (
+                    // Video element
+                    <video
+                        className="w-full h-full object-cover"
+                        autoPlay
+                        controls
+                        muted
+                        onEnded={() => setIsPlaying(false)} // Reset state when video ends
+                    >
+                        <source src="/your-video.mp4" type="video/mp4" /> {/* Replace with your video source */}
+                        Your browser does not support the video tag.
+                    </video>
+                )}
+            </div>
 
         </>
     );
