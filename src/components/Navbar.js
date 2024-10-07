@@ -13,20 +13,20 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex flex-col w-full">
+    <nav className="flex flex-col w-full her-bg-grad" >
       {/* Top banner */}
-      <div className="bg-black text-white py-2 px-4 text-center">
+      <div className="bg-black text-white py-2 px-4 text-center"  data-aos="fade-down">
         <p className="text-xs sm:text-sm">
           ONLY THIS MONTH 20% DISCOUNT ON ALL SERVICES 🔥
         </p>
       </div>
       
       {/* Main navbar */}
-      <div className="flex items-center justify-between  px-4 sm:px-6 bg-white">
+      <div className="flex items-center justify-between  px-4 sm:px-6 bg-white" data-aos="fade-down">
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link href="/" >
-           <img src='/Skintique.png' className=" w-48 h-auto bg-cover"/>
+           <Image src='/logo1.png' className=" w-48 h-auto bg-cover" width={300} height={200}/>
           </Link>
         </div>
 
