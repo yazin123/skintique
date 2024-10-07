@@ -72,7 +72,7 @@ const HeroSection = () => {
                         />
                     </div>
                     <div className="md:w-1/2 md:pl-12">
-                        <h1 className="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-right">MEET SURABHI UNNIKRISHNAN: A JOURNEY OF ELEGANCE AND EXPERTISE</h1>
+                        <h1 className="text-3xl md:text-4xl font-bold head-font mb-4" data-aos="fade-right">MEET SURABHI UNNIKRISHNAN: A JOURNEY OF ELEGANCE AND EXPERTISE</h1>
                         <p className="mb-6" data-aos="fade-right">With over a decade of experience in the beauty industry, Surabhi Unnikrishnan has become a trusted name in aesthetics and beauty care. As a professional trainer, consultant, and business owner, she has mentored over 10,000 beauty professionals across South India, empowering them with knowledge and skills. Renowned for her expertise in permanent makeup and microblading and one of the most sought-after names in the industry, Surabhi's mission is to make beauty care accessible, personalized, and luxurious for every client.</p>
                         <button data-aos="fade-right" className="bg-[#000000] text-white py-2 px-6 rounded-full hover:bg-[#574439] transition duration-300">
                                 Connect with me
