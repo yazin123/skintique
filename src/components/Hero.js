@@ -15,7 +15,7 @@ const HeroSection = () => {
     return (
         <>
             {/* Hero Section */}
-            <div className="relative her-bg-grad min-h-[500px] flex items-center overflow-hidden " style={{height:"100vh"}}>
+            <div className="relative her-bg-grad min-h-[500px] flex items-center overflow-hidden lg:h-screen">
                 {/* Background circle */}
                 <div className="absolute right-2/3 top-1/2 blur transform -translate-y-1/2 w-[200px] h-[200px] bg-[#936b4b57]  rounded-full mr-[-300px] hidden lg:block"></div>
                 <div className="absolute right-2/4 top-1/2 blur transform -translate-y-1/2 w-[300px] h-[300px] bg-[rgb(147,107,75)]  rounded-full mr-[-300px] hidden lg:block"></div>
